@@ -1,0 +1,19 @@
+<div class="page">
+  <table>
+    <thead>
+      <tr>
+        <th>Bank code</th>
+        <th>Bank name</th>
+        <th>Abbreviation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bank of banks">
+        <td>{{ bank.code_Bank }}</td>
+        <td>{{ bank.full_name }}</td>
+        <td>{{ bank.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

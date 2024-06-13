@@ -1,0 +1,44 @@
+<form class="form" (ngSubmit)="onSubmit()" #responsableForm="ngForm">
+  <p class="title">Ajoutez Un Responsable</p>
+
+  <label class="last" for="name">
+    <input type="text" id="name" [(ngModel)]="responsable.name" name="name" class="input" required>
+    <span>Prénom</span>
+  </label>
+
+  <label class="last" for="lastName">
+    <input type="text" id="lastName" [(ngModel)]="responsable.lastName" name="lastName" class="input" required>
+    <span>Nom</span>
+  </label>
+
+  <label class="last" for="email">
+    <input type="email" id="email" [(ngModel)]="responsable.email" name="email" class="input" required>
+    <span>Email</span>
+  </label>
+
+  <label class="last" for="phone">
+    <input type="text" id="phone" [(ngModel)]="responsable.phone" name="phone" class="input" required>
+    <span>Numero</span>
+  </label>
+
+  <label class="last" for="password">
+    <input type="password" id="password" [(ngModel)]="responsable.password" name="password" class="input" required>
+    <span>Mot de Passe</span>
+  </label>
+
+  <label class="last2" for="bank">
+    <select id="bank" [(ngModel)]="selectedBank" name="bank" (change)="onBankChange($event)" class="input2" required>
+      <option *ngFor="let bank of banks" [value]="bank.code_Bank">{{ bank.full_name }}</option>
+    </select>
+    <span>Banque</span>
+  </label>
+
+  <label class="last2" for="agence">
+    <select  id="agence" [(ngModel)]="responsable.agence.codeAgence" name="agence" class="input2" required>
+      <option *ngFor="let agence of filteredAgences" [value]="agence.codeAgence">{{ agence.name }}</option>
+    </select>
+    <span>Agence</span>
+  </label>
+
+  <button type="submit" class="submit" [disabled]="!responsableForm.form.valid">Submit</button>
+</form>

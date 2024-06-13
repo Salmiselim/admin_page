@@ -1,0 +1,95 @@
+<div>
+  <h2>Liste des mises à disposition</h2>
+</div>
+
+<div *ngIf="filteredMiseadispositions.length > 0">
+  <div class="filters-container">
+    <div class="filter-inputs">
+      <label for="codeFilter">Filtrer par Code :</label>
+      <input type="text" id="codeFilter" [(ngModel)]="codeFilter" (input)="applyFilters()">
+    </div>
+    <div class="filter-inputs">
+      <label for="dateFilter">Filtrer par Date :</label>
+      <input type="date" id="dateFilter" [(ngModel)]="timeFilter" (input)="applyFilters()">
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="clc" (click)="toggleCodeOrder()">Code Client {{ codeOrder === 'asc' ? '↑' : '↓' }}</th>
+        <th>Client</th>
+        <th class="clc" (click)="toggleDateOrder()">Date {{ dateOrder === 'asc' ? '↑' : '↓' }}</th>
+        <th>État</th>
+        <th>Livrer</th>
+        <th>Cheques Bancaires</th>
+        <th>Titres de Paiement</th>
+        <th>Documents Bancaires</th>
+        <th>Documents Confidentiels</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let miseadisposition of filteredMiseadispositions">
+        <td>{{ miseadisposition.client?.code || miseadisposition.responsable?.codeResponsable }}</td>
+        <td>{{ miseadisposition.client?.name || miseadisposition.responsable?.name }}</td>
+        <td>{{ miseadisposition.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ miseadisposition.state }}</td>
+        <td>{{ miseadisposition.livrer ? 'Oui' : 'Non' }}</td>
+        <td>{{ miseadisposition.chequesBancaires ? 'Oui' : 'Non' }}</td>
+        <td>{{ miseadisposition.titresDePaiement ? 'Oui' : 'Non' }}</td>
+        <td>{{ miseadisposition.documentsBancaires ? 'Oui' : 'Non' }}</td>
+        <td>{{ miseadisposition.documentsConfidentiels ? 'Oui' : 'Non' }}</td>
+        <td>
+          <button (click)="showDetails(miseadisposition)">
+            <span>Voir Plus</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button *ngFor="let page of pages" [class.active]="page === currentPage" (click)="changePage(page)">{{ page }}</button>
+  </div>
+</div>
+
+<div *ngIf="filteredMiseadispositions.length === 0">
+  <p>Aucun enregistrement trouvé.</p>
+</div>
+
+
+<!-- Modal -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="hideDetails()">&times;</span>
+    <h2>Détails de la mise à disposition</h2>
+    <div *ngIf="selectedMiseadisposition">
+      <div class="sec1">
+        <p><strong>Code Client: </strong> {{ selectedMiseadisposition.client?.code }}</p>
+        <p><strong>Client: </strong> {{ selectedMiseadisposition.client?.name }}</p>
+      </div>
+      <div class="sec1">
+        <p><strong>Email: </strong>{{ selectedMiseadisposition.client?.email }}</p>
+        <p><strong>Date: </strong> {{ selectedMiseadisposition.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+      </div>
+      <hr>
+      <div>
+        <table class="tab2">
+          <tr>
+            <th>État:</th>
+            <th>Livrer:</th>
+          </tr>
+          <tr>
+            <td>{{ selectedMiseadisposition.state }}</td>
+            <td>{{ selectedMiseadisposition.livrer ? 'Oui' : 'Non' }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="btn">
+        <button type="submit" class="val acp" (click)="validerDemande(selectedMiseadisposition)">Valider</button>
+        <button type="submit" class="ann" (click)="annulerDemande(selectedMiseadisposition)">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

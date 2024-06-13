@@ -1,0 +1,96 @@
+<div>
+  <h2>Liste des commandes des levees des fonds</h2>
+</div>
+<div *ngIf="filteredLeveefond.length > 0">
+  <div class="filters-container">
+    <div class="filter-inputs">
+      <label for="codeFilter">Filter by Code:</label>
+      <input type="text" id="codeFilter" [(ngModel)]="codeFilter" (input)="applyFilters()">
+    </div>
+    <div class="filter-inputs">
+      <label for="dateFilter">Filter by Date:</label>
+      <input type="date" id="dateFilter" [(ngModel)]="timeFilter" (input)="applyFilters()">
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="clc" (click)="toggleCodeOrder()">Client Code {{ codeOrder === 'asc' ? '↑' : '↓' }}</th>
+        <th>Client</th>
+        <th>Email</th>
+        <th class="clc" (click)="toggleDateOrder()">Date {{ dateOrder === 'asc' ? '↑' : '↓' }}</th>
+        <th>B50</th>
+        <th>B20</th>
+        <th>B10</th>
+        <th>B5</th>
+        <th>Monnaie</th>
+        <th>Etat</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let leveefondItem of paginatedLeveefond">
+        <td>{{ leveefondItem.client?.code || leveefondItem.responsable?.codeResponsable }}</td>
+        <td>{{ leveefondItem.client?.name || leveefondItem.responsable?.name }}</td>
+        <td>{{ leveefondItem.client?.email || leveefondItem.responsable?.email}}</td>
+        <td>{{ leveefondItem.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ leveefondItem.b50  }}</td>
+        <td>{{ leveefondItem.b20 }}</td>
+        <td>{{ leveefondItem.b10 }}</td>
+        <td>{{ leveefondItem.b5}}</td>
+        <td>{{ leveefondItem.monnaie }}</td>
+        <td>{{ leveefondItem.state}}</td>
+        <td><button (click)="showDetails(leveefondItem)"><span>Voir Plus</span></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button *ngFor="let page of pages" [class.active]="page === currentPage" (click)="changePage(page)">{{ page }}</button>
+  </div>
+</div>
+<div *ngIf="filteredLeveefond.length === 0">
+  <p>No records found.</p>
+</div>
+
+<!-- Modal -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="hideDetails()">&times;</span>
+    <h2>Levee Fonds N°</h2>
+    <div *ngIf="selectedLeveefondItem">
+      <div class="sec1">
+        <p><strong>Client Code: </strong> {{ selectedLeveefondItem.client?.code || selectedLeveefondItem.responsable?.codeResponsable }}</p>
+        <p><strong>Client: </strong> {{ selectedLeveefondItem.client?.name || selectedLeveefondItem.responsable?.name }}</p>
+      </div>
+      <div class="sec1">
+        <p><strong>Email: </strong>{{ selectedLeveefondItem.client?.email || selectedLeveefondItem.responsable?.email }}</p>
+        <p><strong>Date: </strong> {{ selectedLeveefondItem.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+      </div>
+      <hr>
+      <div>
+        <table class="tab2">
+          <tr>
+            <th>B50:</th>
+            <th>B20:</th>
+            <th>B10:</th>
+            <th>B5:</th>
+            <th>Monnaie:</th>
+          </tr>
+          <tr>
+            <td>{{ selectedLeveefondItem.b50 }}</td>
+            <td>{{ selectedLeveefondItem.b20 }}</td>
+            <td>{{ selectedLeveefondItem.b10 }}</td>
+            <td>{{ selectedLeveefondItem.b5}}</td>
+            <td>{{ selectedLeveefondItem.monnaie }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="btn">
+        <button type="submit" class="val acp" (click)="validerDemande(selectedLeveefondItem)">Valider</button>
+        <button type="submit" class="ann" (click)="annulerDemande(selectedLeveefondItem)">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

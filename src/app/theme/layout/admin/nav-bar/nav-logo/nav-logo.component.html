@@ -1,0 +1,17 @@
+<div class="m-header">
+  <a [routerLink]="['/default/']" >
+    <img src="/assets/logo.png" alt="" class="logo" />
+  </a>
+  <div class="hide">
+    <a
+      href="javascript:"
+      class="pc-head-link head-link-primary"
+      [ngClass]="{ on: navCollapsed }"
+      id="sidebar-hide mobile-collapse"
+      (click)="navCollapse()"
+    >
+      <i class="ti ti-menu-2"></i>
+    </a>
+  </div>
+</div>
+<!-- [ Header ] end -->

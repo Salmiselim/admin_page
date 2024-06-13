@@ -1,0 +1,87 @@
+<div>
+  <h2>Liste des échanges</h2>
+</div>
+<div *ngIf="filteredEchanges.length > 0">
+  <div class="filters-container">
+    <div class="filter-inputs">
+      <label for="codeFilter">Filter by Code:</label>
+      <input type="text" id="codeFilter" [(ngModel)]="codeFilter" (input)="applyFilters()">
+    </div>
+    <div class="filter-inputs">
+      <label for="dateFilter">Filter by Date:</label>
+      <input type="date" id="dateFilter" [(ngModel)]="timeFilter" (input)="applyFilters()">
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="clc" (click)="toggleCodeOrder()">Client Code {{ codeOrder === 'asc' ? '↑' : '↓' }}</th>
+        <th>Client</th>
+        <th>Responsable</th>
+        <th class="clc" (click)="toggleDateOrder()">Date {{ dateOrder === 'asc' ? '↑' : '↓' }}</th>
+        <th>Montant</th>
+        <th>État</th>
+        <th>Livrer</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let echange of filteredEchanges">
+        <td>{{ echange.client?.code || echange.responsable?.codeResponsable }}</td>
+        <td>{{ echange.client?.name || echange.responsable?.name }}</td>
+        <td>{{ echange.responsable?.name }}</td>
+        <td>{{ echange.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ echange.montant }}</td>
+        <td>{{ echange.state }}</td>
+        <td>{{ echange.livrer ? 'Yes' : 'No' }}</td>
+        
+        <td><button (click)="showDetails(echange)"><span>Voir Plus</span></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button *ngFor="let page of pages" [class.active]="page === currentPage" (click)="changePage(page)">{{ page }}</button>
+  </div>
+</div>
+<div *ngIf="filteredEchanges.length === 0">
+  <p>No records found.</p>
+</div>
+
+<!-- Modal -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="hideDetails()">&times;</span>
+    <h2>Détails de l'échange</h2>
+    <div *ngIf="selectedEchange">
+      <div class="sec1">
+        <p><strong>Client Code: </strong> {{ selectedEchange.client?.code || selectedEchange.responsable?.codeResponsable }}</p>
+        <p><strong>Client: </strong> {{ selectedEchange.client?.name || selectedEchange.responsable?.name }}</p>
+      </div>
+      <div class="sec1">
+        <p><strong>Email: </strong>{{ selectedEchange.client?.email || selectedEchange.responsable?.email }}</p>
+        <p><strong>Date: </strong> {{ selectedEchange.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+      </div>
+      <hr>
+      <div>
+        <table class="tab2">
+          <tr>
+            <th>Montant:</th>
+            <th>État:</th>
+            <th>Livrer:</th>
+          </tr>
+          <tr>
+            <td>{{ selectedEchange.montant }}</td>
+            <td>{{ selectedEchange.state }}</td>
+            <td>{{ selectedEchange.livrer ? 'Yes' : 'No' }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="btn">
+        <button type="submit" class="val acp" (click)="validerDemande(selectedEchange)">Valider</button>
+        <button type="submit" class="ann" (click)="annulerDemande(selectedEchange)">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,140 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-left: 1px black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+  th {
+    padding: 8px;
+    color: white;
+    text-align: center;
+    background-color: hsl(228, 69%, 19%);
+  }
+
+  td {
+    padding: 5px;
+    text-align: center;
+    background-color: white;
+  }
+  th ::first-letter {
+    text-transform: uppercase;
+    }
+
+    tr>th:nth-child(1) {
+      border-top-left-radius: 8px;
+    }
+
+    tr>th:nth-child(5) {
+      border-top-right-radius: 8px;
+    }
+    tr>td:nth-child(1) {
+      width: 4%;
+
+    }
+    tr>td:nth-child(2) {
+      width: 15%;
+    }
+
+    tr>td:nth-child(3) {
+      width: 25%;
+    }
+
+    tr>td:nth-child(4) {
+      width: 25%;
+    }
+
+    tr>td:nth-child(5) {
+      width: 10%;
+    }
+    tr>td:nth-child(6) {
+      width: 10%;
+    }
+.buttns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 55px;
+  height: 30px;
+  border: none;
+  padding: 0px 20px;
+  background-color: #086d1c;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  transition-duration: .3s;
+  margin-bottom: 10px;
+}
+
+.svg {
+  position: relative;
+  fill: white;
+  transition-duration: .3s;
+}
+
+
+
+.Btn:hover svg {
+  left: 25%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.Btn:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+
+}
+.Btn2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50px;
+  height: 30px;
+  border: none;
+  padding: 0px 15px;
+  background-color: #db3c34;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  transition-duration: .3s;
+}
+
+.svg2 {
+  width: 15px;
+  position: relative;
+  fill: white;
+  transition-duration: .3s;
+  margin-left: 1.5px;
+}
+
+.Btn2:hover {
+  color: transparent;
+  background-color: #e11e14;
+}
+
+.Btn2:hover svg {
+  left: 10%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.Btn2:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+
+}
+

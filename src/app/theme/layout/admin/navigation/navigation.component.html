@@ -1,0 +1,46 @@
+<nav>
+  <div class="navbar-wrapper">
+    <div class="m-header">
+
+    </div>
+    <div class="left-list">
+      <div class="sidebar-container">
+        <ul class="lst">
+          <h5>Dashboard</h5>
+          <li class="bank-list" (click)="toggleList('bankSubList1')">Banques</li>
+          <ul class="sub-list" id="bankSubList1">
+            <li><a href="/default">Liste des banque</a></li>
+            <li><a href="/addbq">Ajouter une banque</a></li>
+          </ul>
+
+          <li class="bank-list" (click)="toggleList('bankSubList2')">Agences</li>
+          <ul class="sub-list" id="bankSubList2">
+            <li><a href="/agclist">Liste Des Agence</a></li>
+            <li><a href="/addagc">Ajouter Une Agence</a></li>
+          </ul>
+
+          <li class="bank-list" (click)="toggleList('bankSubList3')">Clients</li>
+          <ul class="sub-list" id="bankSubList3">
+            <li><a href="chat">Chat</a></li>
+            <li><a href="respo">Liste des responsables</a></li>
+            <li><a href="Listeclient">Liste des client</a></li>
+            <li><a href="newclients">nouveau clients</a></li>
+          </ul>
+
+          <li class="bank-list" (click)="toggleList('bankSubList4')">Commandes</li>
+          <ul class="sub-list" id="bankSubList4">
+            <li><a href="/af">Appel De Fonds</a></li>
+            <li><a href="/lv">Levée De Fonds</a></li>
+            <li><a href="MAD">Mise A Disposition</a></li>
+            <li><a href="echange">Echange</a></li>
+          </ul>
+          <li class="bank-list" (click)="toggleList('bankSubList5')">Planification</li>
+          <ul class="sub-list" id="bankSubList5">
+            <li><a href="/plan">Planifier</a></li>
+            <li><a>Historique</a></li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

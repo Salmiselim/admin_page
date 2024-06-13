@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+  <p class="title">Ajoutez Un Banque</p>
+  <div class="flex">
+    <label class="codecli">
+      <input required formControlName="code_Bank"  placeholder="" type="text" class="input">
+      <span>Code Banque</span>
+    </label>
+    </div>
+    <label class="name">
+      <input required formControlName="full_name"  placeholder="" type="text" class="input">
+      <span>Nom du Banque</span>
+    </label>
+    <label class="lastname">
+      <input required formControlName="name" placeholder="" type="text" class="input">
+      <span>Abbreviation</span>
+    </label>
+  <button class="submit">Submit</button>
+  </form>

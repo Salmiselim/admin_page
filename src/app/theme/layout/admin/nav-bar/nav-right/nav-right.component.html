@@ -1,0 +1,35 @@
+<div class="ms-auto">
+  <ul class="list-unstyled">
+
+    <li>
+      <div class="dropdown pc-h-item header-user-profile" ngbDropdown>
+        <a
+          class="pc-head-link head-link-primary dropdown-toggle arrow-none me-0"
+          data-bs-toggle="dropdown"
+          href="javascript:"
+          ngbDropdownToggle
+        >
+        <img src="assets/icon_admin.png" alt="user-image" class="user" />
+          <span>
+            <i class="ti ti-settings"></i>
+          </span>
+        </a>
+        <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown" ngbDropdownMenu>
+          <div class="dropdown-header">
+            <h4> Welcome</h4>
+            <ng-scrollbar style="height: calc(65vh - 360px)" visibility="hover">
+              <a [routerLink]="['/guest/register']" class="dropdown-item">
+                <i class="ti ti-settings"></i>
+                <span>Account Profile</span>
+              </a>
+              <a [routerLink]="['/login']" class="dropdown-item">
+                <i class="ti ti-logout"></i>
+                <span>Logout</span>
+              </a>
+            </ng-scrollbar>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,145 @@
+<h1>Planification des livraisons</h1>
+<div class="tab" *ngIf="validerAppelfond.length > 0">
+  <h3>Les Appels de Fonds Valider</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Client Code</th>
+        <th>Client Name</th>
+        <th>Date</th>
+        <th>Nom de l'agence</th>
+        <th>Adresse</th>
+        <th>Etat</th>
+        <th>Check</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appelfondItem of validerAppelfond">
+        <td>{{ appelfondItem.client?.code || appelfondItem.responsable.codeResponsable }}</td>
+        <td>{{ appelfondItem.client?.name || appelfondItem.responsable?.name }}</td>
+        <td>{{ appelfondItem.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ appelfondItem.responsable.agence.name }}</td>
+        <td>{{ appelfondItem.responsable.agence.address }}</td>
+        <td>{{ appelfondItem.state }}</td>
+        <td><input type="checkbox" [checked]="appelfondItem.livrer" (change)="toggleLivrerState(appelfondItem)"></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn1" (click)="livraisonTerminer()"><span>Livraison Terminer</span></button>
+  <button class="btn1" (click)="planifierCircuit()"><span>Ajouter au circuit</span></button>
+</div>
+
+<div class="tab" *ngIf="validerLeveefond.length > 0">  <!-- Add this block -->
+  <h3>Les Levées de Fonds Valider</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Client Code</th>
+        <th>Client Name</th>
+        <th>Date</th>
+        <th>Nom de l'agence</th>
+        <th>Adresse</th>
+        <th>Etat</th>
+        <th>Check</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let leveefondItem of validerLeveefond">
+        <td>{{ leveefondItem.client?.code || leveefondItem.responsable.codeResponsable }}</td>
+        <td>{{ leveefondItem.client?.name || leveefondItem.responsable?.name }}</td>
+        <td>{{ leveefondItem.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ leveefondItem.responsable.agence.name }}</td>
+        <td>{{ leveefondItem.responsable.agence.address }}</td>
+        <td>{{ leveefondItem.state }}</td>
+        <td><input type="checkbox" [checked]="leveefondItem.livrer" (change)="toggleLeveefondLivrerState(leveefondItem.codeLV  , $event)"></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn1" (click)="livraisonTerminer()"><span>Livraison Terminer</span></button>
+  <button class="btn1" (click)="planifierCircuit()"><span>Ajouter au circuit</span></button>
+
+</div>
+
+
+
+<div class="tab" *ngIf="validerMAD.length > 0">  <!-- Add this block -->
+  <h3>Les mises a disposition Valider</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Client Code</th>
+        <th>Client Name</th>
+        <th>Date</th>
+        <th>Nom de l'agence</th>
+        <th>Adresse</th>
+        <th>Etat</th>
+        <th>Check</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let miseadispo of validerMAD">
+        <td>{{ miseadispo.client?.code || miseadispo.responsable.codeResponsable }}</td>
+        <td>{{ miseadispo.client?.name || miseadispo.responsable?.name }}</td>
+        <td>{{ miseadispo.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ miseadispo.responsable.agence.name }}</td>
+        <td>{{ miseadispo.responsable.agence.address }}</td>
+        <td>{{ miseadispo.state }}</td>
+        <td><input type="checkbox" [checked]="miseadispo.livrer" (change)="toggleLivrerStateMAD(miseadispo)"></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn1" (click)="livraisonTerminer()"><span>Livraison Terminer</span></button>
+  <button class="btn1" (click)="planifierCircuit()"><span>Ajouter au circuit</span></button>
+
+</div>
+
+<div class="tab" *ngIf="validerEchange.length > 0">  <!-- Add this block -->
+  <h3>Les Echanges Valider</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Client Code</th>
+        <th>Client Name</th>
+        <th>Date</th>
+        <th>Nom de l'agence</th>
+        <th>Adresse</th>
+        <th>Etat</th>
+        <th>Check</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Echange of validerEchange">
+        <td>{{ Echange.client?.code || Echange.responsable.codeResponsable }}</td>
+        <td>{{ Echange.client?.name || Echange.responsable?.name }}</td>
+        <td>{{ Echange.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ Echange.responsable.agence.name }}</td>
+        <td>{{ Echange.responsable.agence.address }}</td>
+        <td>{{ Echange.state }}</td>
+        <td><input type="checkbox" [checked]="Echange.livrer" (change)="toggleLivrerStateEchange(Echange)"></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn1" (click)="livraisonTerminer()"><span>Livraison Terminer</span></button>
+  <button class="btn1" (click)="planifierCircuit()"><span>Ajouter au circuit</span></button>
+
+</div>
+<div id="map" style="height: 500px; width: 100%;"></div>
+<div class="route-info">
+  <div class="info">
+    <span class="label">Distance:</span>
+    <span>{{ distance }} km</span>
+  </div>
+  <div class="info">
+    <span class="label">Time:</span>
+    <span>{{ time }}</span>
+  </div>
+</div>
+
+<div class="places-to-visit" *ngIf="route && route.length > 0">
+  <h3>Ordre des lieux à visiter</h3>
+  <ol>
+    <li *ngFor="let place of getOrderedRouteNames(); let i = index">
+      <label for="place{{i}}">{{i+1}}. {{ place }}</label>
+    </li>
+  </ol>
+</div>

@@ -1,0 +1,228 @@
+
+table {
+  margin-top: 2rem;
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+  th {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    background-color: #0f1c51;
+  }
+
+  td {
+    padding: 4px;
+    text-align: center;
+    background-color: white;
+    border-bottom: 0.5px solid #00000051;
+
+  }
+
+  .btn1 {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #040c54;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 160px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+
+   }
+
+   .btn1 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+   }
+
+   .btn1 span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.5s;
+   }
+
+   .btn1:hover span {
+    padding-right: 15px;
+   }
+
+   .btn1:hover span:after {
+    opacity: 1;
+    right: 0;
+   }
+
+  h1 {
+    font-size: 25px;
+    color: rgb(63, 62, 62);
+    text-transform: capitalize;
+  }
+  .clc:hover {
+    cursor: pointer;
+  }
+
+  thead::first-letter {
+    text-transform: uppercase;
+    }
+
+    tr>th:nth-child(1) {
+      border-top-left-radius: 8px;
+    }
+    tr>td:nth-child(7) {
+      width: 20%;;
+    }
+    tr>th:nth-child(9) {
+      border-top-right-radius: 8px;
+    }
+
+.buttns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+    margin-top: 5px;
+  }
+
+
+  .Btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  width: 55px;
+  height: 30px;
+  border: none;
+  padding: 0px 20px;
+  background-color: #086d1c;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  transition-duration: .3s;
+  margin-bottom: 10px;
+}
+
+.svg {
+  position: relative;
+  fill: white;
+  transition-duration: .3s;
+}
+
+
+
+.Btn:hover svg {
+  left: 25%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.Btn:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+
+}
+.Btn2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50px;
+  height: 30px;
+  border: none;
+  padding: 0px 15px;
+  background-color: #db3c34;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  transition-duration: .3s;
+}
+
+.svg2 {
+  width: 15px;
+  position: relative;
+  fill: white;
+  transition-duration: .3s;
+  margin-left: 1.5px;
+}
+
+.Btn2:hover {
+  color: transparent;
+  background-color: #e11e14;
+}
+
+.Btn2:hover svg {
+  left: 10%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.Btn2:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+
+}
+/* Filters Container */
+.filters-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Spacing between filters and table */
+}
+
+.filter-inputs {
+  display: flex;
+  align-items: center;
+}
+
+.filter-inputs label {
+  margin-right: 10px; /* Spacing between labels and inputs */
+}
+
+.filter-inputs input[type="number"],
+.filter-inputs select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.filter-inputs select {
+  background-color: #fff;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;padding: 5px 12px;
+}
+
+.pagination button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 5px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #649ec5;
+
+  color: white;
+}

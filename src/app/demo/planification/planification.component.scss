@@ -1,0 +1,494 @@
+#map {
+  height: 450px;
+  width: 750px;
+}
+.leaflet-routing-container {
+  display: none !important;
+}
+
+.page {
+  margin-top: 2%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+th {
+  padding: 10px;
+  color: white;
+  text-align: center;
+  background-color: #0f1c51;
+}
+
+td {
+  text-align: center;
+  border: 0.5px solid #00000051;
+}
+
+.clc:hover {
+  cursor: pointer;
+}
+
+th::first-letter {
+  text-transform: uppercase;
+}
+
+tr > th:nth-child(1) {
+  border-top-left-radius: 8px;
+}
+
+tr > th:nth-child(7) {
+  border-top-right-radius: 8px;
+}
+
+.buttns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+tr > td:nth-child(1) {
+  width: 10%;
+}
+
+tr > td:nth-child(2) {
+  width: 10%;
+}
+
+tr > td:nth-child(3) {
+  width: 20%;
+}
+
+tr > td:nth-child(4) {
+  width: 20%;
+}
+
+tr > td:nth-child(5) {
+  width: 20%;
+}
+
+tr > td:nth-child(6) {
+  width: 8%;
+}
+
+tr > td:nth-child(7) {
+  width: 8%;
+}
+
+.Btn, .Btn2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80px;
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+  margin-bottom: 10px;
+}
+
+.Btn {
+  background-color: #3498db;
+}
+
+.Btn:hover {
+  background-color: #209b2e;
+  color: transparent;
+}
+
+.Btn:active {
+  transform: translate(3px, 3px);
+  transition-duration: 0.3s;
+}
+
+.Btn .svg {
+  width: 13px;
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+  fill: white;
+  transition-duration: 0.3s;
+}
+
+.Btn:hover .svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: 0.3s;
+}
+
+.Btn2 {
+  background-color: #db3c34;
+}
+
+.Btn2:hover {
+  background-color: #e11e14;
+  color: transparent;
+}
+
+.Btn2:active {
+  transform: translate(3px, 3px);
+  transition-duration: 0.3s;
+}
+
+.Btn2 .svg2 {
+  width: 10px;
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  fill: white;
+  transition-duration: 0.3s;
+}
+
+.Btn2:hover .svg2 {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: 0.3s;
+}
+
+.filters-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filt {
+  margin-left: -60%;
+}
+
+.filter-inputs {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.filter-inputs label {
+  margin-right: 10px;
+}
+
+.filter-inputs input[type="number"],
+.filter-inputs select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.filter-inputs select {
+  background-color: #fff;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 5px 12px;
+}
+
+.pagination button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 5px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #649ec5;
+  color: white;
+}
+
+.sec1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sec1 p {
+  font-size: 15px;
+}
+
+.val {
+  width: 150px;
+}
+
+.acp {
+  background-color: #209b2e;
+}
+
+.sup {
+  background-color: rgb(203, 3, 3);
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn1 {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #040c54;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+  width: 140px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  float: right;
+}
+
+.btn1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn1 span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+}
+
+.btn1:hover span {
+  padding-right: 15px;
+}
+
+.btn1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  margin-left: 30%;
+  top: 7%;
+  width: 50%;
+  height: 100%;
+  scrollbar-width: none;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+h2 {
+  float: left;
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+}
+
+.close {
+  color: red;
+  margin-left: 98.5%;
+  margin-top: -4%;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tab2 {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tab2 th::first-letter {
+  text-transform: uppercase;
+}
+
+.tab2 tr > th:nth-child(1) {
+  border-top-left-radius: 8px;
+}
+
+.tab2 tr > th:nth-child(5) {
+  border-top-right-radius: 8px;
+}
+
+th {
+  padding: 10px;
+  color: white;
+  text-align: center;
+  background-color: #0f1c51;
+}
+
+td {
+  text-align: center;
+  border: 0.5px solid #00000051;
+}
+
+.clc:hover {
+  cursor: pointer;
+}
+
+.tab {
+  margin: 2rem 0 5rem 0;
+}
+
+/* New Styles for Distance, Time, and Order List */
+.details {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  max-width: 90%;
+  text-align: center;
+}
+
+.details p {
+  margin: 10px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+.route-list {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  max-width: 90%;
+}
+
+.route-list h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #555;
+}
+
+.route-list ol {
+  padding-left: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.route-list li {
+  margin-bottom: 10px;
+}
+/* planification.component.scss */
+
+/* Container Styles */
+.details,
+.route-list {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Details Styles */
+.details {
+  max-width: 300px;
+}
+
+.details p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Route List Styles */
+.route-list {
+  max-width: 300px;
+}
+
+.route-list h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.route-list ol {
+  padding-left: 20px;
+}
+
+.route-list li {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.route-info {
+  margin-bottom: 20px;
+}
+
+.route-info .info {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.route-info .info .label {
+  font-weight: bold;
+  min-width: 100px;
+}
+
+.places-to-visit {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.places-to-visit h3 {
+  margin-top: 0;
+}
+
+.places-to-visit ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+.places-to-visit ol li {
+  margin-bottom: 10px;
+}
+
+.places-to-visit ol li:before {
+  content: "\2022";
+  color: #007bff;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+.places-to-visit ol li {
+  display: flex;
+  align-items: center;
+}
+
+.places-to-visit ol li input[type="checkbox"] {
+  margin-right: 10px;
+}

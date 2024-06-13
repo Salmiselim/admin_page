@@ -1,0 +1,37 @@
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p class="title">Ajoutez Un Agence</p>
+  <label class="last" for="name">
+  <input required formControlName="name" id="name" type="text" class="input" required="">
+  <span>Nom du L'Agence</span>
+</label>
+  <label class="last" for="address">
+  <input required formControlName="address" id="address" type="text" class="input" required="">
+  <span>Address</span></label>
+  <label class="last" for="latitude">
+    <input required formControlName="latitude" id="latitude" type="number" step="any" class="input" required="">
+    <span>Latitude</span>
+  </label>
+  <label class="last" for="longitude">
+    <input required formControlName="longitude" id="longitude" type="number" step="any" class="input" required="">
+    <span>Longitude</span>
+    </label>
+  <label class="last2" for="region">
+    <select class="input2" formControlName="region" id="region">
+      <option value=""></option>
+      <option value="ZONE TUNIS">ZONE TUNIS</option>
+      <option value="ZONE NORD OUEST">ZONE NORD OUEST</option>
+      <option value="ZONE CAP BON">ZONE CAP BON</option>
+      <option value="ZONE SAHEL">ZONE SAHEL</option>
+      <option value="ZONE SFAX">ZONE SFAX</option>
+      <option value="ZONE SUD">ZONE SUD</option>
+    </select>
+    <span>Region</span>
+  </label>
+  <label class="last2" for="bank">
+  <select class="input2" formControlName="bank" id="bank">
+    <option *ngFor="let bank of banks" [ngValue]="bank">{{ bank.name }}</option>
+  </select>
+  <span>Bank</span>
+</label>
+  <button type="submit" class="submit">ADD</button>
+</form>

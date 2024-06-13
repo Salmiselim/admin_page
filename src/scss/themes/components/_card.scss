@@ -1,0 +1,8 @@
+.card {
+  display: flex;
+  margin-bottom: 24px;
+  transition: box-shadow 0.2s ease-in-out;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  border: none;
+  transition: all 0.5s ease-in-out;
+}

@@ -1,0 +1,32 @@
+<div class="auth-main">
+  <div class="auth-wrapper v3">
+    <div class="auth-form">
+      <div class="card my-5">
+        <div class="card-body">
+          <a  class="d-flex justify-content-center">
+            <img class="logo" src="assets/logo.png" />
+          </a>
+          <div class="row">
+            <div class="d-flex justify-content-center">
+              <div class="auth-header">
+                <p class="fs-4 mt-2">Espace Administrateur</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" [(ngModel)]="admin.username" class="form-control" id="floatingInput" />
+            <label for="floatingInput">Username</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" [(ngModel)]="admin.password" class="form-control" id="password" />
+            <label for="password">Password</label>
+          </div>
+          <div class="d-grid mt-4">
+            <button type="button" class="btn btn-secondary" (click)="login()">Sign In</button>
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

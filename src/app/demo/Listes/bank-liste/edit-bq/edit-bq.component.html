@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="code_Bank">code bank:</label>
+  <input required formControlName="code_Bank" id="code_Bank" type="text" class="input" >
+  <label for="full_name">full name:</label>
+  <input required formControlName="full_name" id="full_name" type="text" class="input">
+  <label for="name">abbreviation:</label>
+  <input required formControlName="name" id="name" type="text" class="input">
+  <button type="submit" class="submit">EDIT</button>
+</form>

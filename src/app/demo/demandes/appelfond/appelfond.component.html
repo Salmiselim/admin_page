@@ -1,0 +1,171 @@
+<div class="page">
+  <div>
+    <h2>Liste des commandes des appels du fonds</h2>
+  </div>
+
+  <div class="filters-container">
+    <!-- Filter by Code -->
+    <div class="filter-inputs filt">
+      <label for="codeFilter">Filter by Code:</label>
+      <input type="text" id="codeFilter" [(ngModel)]="codeFilter" (input)="filterAppelfond()">
+    </div>
+    <!-- Filter by Date -->
+    <div class="filter-inputs">
+      <label for="dateFilter">Filter by Date:</label>
+      <input type="date" id="dateFilter" [(ngModel)]="timeFilter" (input)="filterAppelfond()">
+    </div>
+  </div>
+
+  <div class="tab1" *ngIf="enCoursAppelfond.length > 0">
+    <h3>En cours</h3>
+    <table >
+      <thead>
+        <tr>
+          <th class="clc" (click)="toggleCodeOrder()">Client Code {{ codeOrder === 'asc' ? '↑' : '↓' }}</th>
+          <th>Client Name</th>
+          <th>Client Email</th>
+          <th class="clc"  (click)="toggleDateOrder()">Date {{ dateOrder === 'asc' ? '↑' : '↓' }}</th>
+          <th>B50</th>
+          <th>B20</th>
+          <th>B10</th>
+          <th>B5</th>
+          <th>Monnaie</th>
+          <th>Etat</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appelfondItem of enCoursAppelfond">
+          <td>{{ appelfondItem.client?.code || appelfondItem.responsable?.codeResponsable }}</td>
+          <td>{{ appelfondItem.client?.name || appelfondItem.responsable?.name }}</td>
+          <td>{{ appelfondItem.client?.email || appelfondItem.responsable?.email}}</td>
+          <td>{{ appelfondItem.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{ appelfondItem.b50  }}</td>
+          <td>{{ appelfondItem.b20 }}</td>
+          <td>{{ appelfondItem.b10 }}</td>
+          <td>{{ appelfondItem.b5}}</td>
+          <td>{{ appelfondItem.monnaie }}</td>
+          <td>{{ appelfondItem.state}}</td>
+          <td><button (click)="showDetails(appelfondItem)"><span>Voir Plus</span></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab2" *ngIf="annulerAppelfond.length > 0">
+    <h3>Annuler</h3>
+    <table>
+      <thead>
+        <tr>
+          <th class="clc"  (click)="toggleCodeOrder()">Client Code {{ codeOrder === 'asc' ? '↑' : '↓' }}</th>
+          <th>Client Name</th>
+          <th>Client Email</th>
+          <th class="clc"  (click)="toggleDateOrder()">Date {{ dateOrder === 'asc' ? '↑' : '↓' }}</th>
+          <th>B50</th>
+          <th>B20</th>
+          <th>B10</th>
+          <th>B5</th>
+          <th>Monnaie</th>
+          <th>Etat</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appelfondItem of annulerAppelfond">
+          <td>{{ appelfondItem.client?.code || appelfondItem.responsable?.codeResponsable }}</td>
+          <td>{{ appelfondItem.client?.name || appelfondItem.responsable?.name }}</td>
+          <td>{{ appelfondItem.client?.email || appelfondItem.responsable?.email}}</td>
+          <td>{{ appelfondItem.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{ appelfondItem.b50 }}</td>
+          <td>{{ appelfondItem.b20 }}</td>
+          <td>{{ appelfondItem.b10 }}</td>
+          <td>{{ appelfondItem.b5}}</td>
+          <td>{{ appelfondItem.monnaie }}</td>
+          <td>{{ appelfondItem.state}}</td>
+          <td><button (click)="showDetails(appelfondItem)"><span>Voir Plus</span></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab3" *ngIf="validerAppelfond.length > 0">
+    <h3>Valider</h3>
+    <table >
+      <thead class="val">
+        <tr>
+          <th class="clc"  (click)="toggleCodeOrder()">Client Code {{ codeOrder === 'asc' ? '↑' : '↓' }}</th>
+          <th>Client Name</th>
+          <th>Client Email</th>
+          <th class="clc"  (click)="toggleDateOrder()">Date {{ dateOrder === 'asc' ? '↑' : '↓' }}</th>
+          <th>B50</th>
+          <th>B20</th>
+          <th>B10</th>
+          <th>B5</th>
+          <th>Monnaie</th>
+          <th>Etat</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appelfondItem of validerAppelfond">
+          <td>{{ appelfondItem.client?.code || appelfondItem.responsable?.codeResponsable }}</td>
+          <td>{{ appelfondItem.client?.name || appelfondItem.responsable?.name }}</td>
+          <td>{{ appelfondItem.client?.email || appelfondItem.responsable?.email}}</td>
+          <td>{{ appelfondItem.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{ appelfondItem.b50 }}</td>
+          <td>{{ appelfondItem.b20 }}</td>
+          <td>{{ appelfondItem.b10 }}</td>
+          <td>{{ appelfondItem.b5}}</td>
+          <td>{{ appelfondItem.monnaie }}</td>
+          <td>{{ appelfondItem.state}}</td>
+          <td><button (click)="showDetails(appelfondItem)"><span>Voir Plus</span></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal -->
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="hideDetails()">&times;</span>
+      <h2>Appel Fonds N°</h2>
+      <div *ngIf="selectedAppelfondItem">
+        <div class="sec1">
+          <p><strong>Client Code:</strong> {{ selectedAppelfondItem.client?.code || selectedAppelfondItem.responsable?.codeResponsable }}</p>
+          <p><strong>Client:</strong> {{ selectedAppelfondItem.client?.name || selectedAppelfondItem.responsable?.name }} {{ selectedAppelfondItem.client?.lastname || selectedAppelfondItem.responsable?.name }}</p>
+        </div>
+        <div class="sec1">
+          <p><strong>Email:</strong> {{ selectedAppelfondItem.client?.email || selectedAppelfondItem.responsable?.email }}</p>
+          <p><strong>Date:</strong> {{ selectedAppelfondItem.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+        </div>
+        <hr>
+        <div>
+          <table class="tab2">
+            <tr>
+              <th>B50:</th>
+              <th>B20:</th>
+              <th>B10:</th>
+              <th>B5:</th>
+              <th>Monnaie:</th>
+            </tr>
+            <tr>
+              <td>{{ selectedAppelfondItem.b50 }}</td>
+              <td>{{ selectedAppelfondItem.b20 }}</td>
+              <td>{{ selectedAppelfondItem.b10 }}</td>
+              <td>{{ selectedAppelfondItem.b5}}</td>
+              <td>{{ selectedAppelfondItem.monnaie }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="btn">
+          <button type="submit" class="val acp" (click)="validerDemande(selectedAppelfondItem)">Valider</button>
+          <button type="submit" class="ann" (click)="annulerDemande(selectedAppelfondItem)">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <button *ngFor="let page of pages" (click)="changePage(page)">{{ page }}</button>
+  </div>
+</div>
